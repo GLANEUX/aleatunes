@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 import '../app_colors.dart';
@@ -61,11 +62,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Column(
         children: [
-   
-           trackData.isEmpty
+          header(),
+          trackData.isEmpty
               ? const Center(child: CircularProgressIndicator())
               : Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -141,6 +141,50 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
         ],
+      ),
+    );
+  }
+}
+
+class header extends StatelessWidget {
+  const header({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.primaryColor,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: [
+            Image.asset(
+              'assets/aleatunes.png',
+              width: 20,
+            ),
+            const SizedBox(
+                width: 10), // Ajouter un espace entre l'image et le texte
+            Expanded(
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start, // Aligner le texte à gauche
+                children: [
+                  Text(
+                    'fdsggsdfgfdkmj  mkldfsjg jkf qlc i dgkfjog  kjodg ksdfpj nezj',
+                    style: Theme.of(context).textTheme.headline6,
+                    softWrap: true,
+                  ),
+                  Text(
+                    'fdsggsdfgfdkmj  mkldfsjg jkf qlc i dgkfjog  kjodg ksdfpj nezj',
+                    style: Theme.of(context).textTheme.headline6,
+                    softWrap: true,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
