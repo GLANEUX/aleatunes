@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
-
+import '../home.dart';
+import '../artistes/ArtistePage.dart';
+import '../articles/articles_page.dart';
+import '../about.dart';
 
 class DeviceScreen extends StatefulWidget {
   const DeviceScreen({super.key});
@@ -15,6 +17,9 @@ class _DeviceScreenState extends State<DeviceScreen> {
 
   final List<Widget> _screenList = [
     const MainPage(),
+    const ArtistePage(),
+     ArticlesPage(),
+    const AboutPage(),
 
   ];
 
@@ -40,7 +45,10 @@ class _DeviceScreenState extends State<DeviceScreen> {
         onTap: _onTabTapped,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.queue_music), label: 'Artiste'),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: 'Articles'),
+          BottomNavigationBarItem(icon: Icon(Icons.info), label: 'A propos'),
+      
         ],
       ),
     );

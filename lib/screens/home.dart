@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
-import '../app_colors.dart';
+import 'components/LogoHeader.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MainPageState createState() => _MainPageState();
 }
 
@@ -24,15 +24,18 @@ class _MainPageState extends State<MainPage> {
     Map<String, dynamic> result;
     do {
       trackId = random.nextInt(1000000);
-      final response =
-          await http.get(Uri.parse('https://api.deezer.com/track/$trackId'));
-      result = jsonDecode(response.body);
+      final response = await http.get(Uri.parse('https://api.deezer.com/track/$trackId'));
+      if (response.statusCode == 200) {
+        result = jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load track');
+      }
     } while (result.containsKey('error') || result['preview'] == '');
 
     setState(() {
       trackData = result;
       isPlaying = false;
-      _audioPlayer.stop(); // Stop previous audio if any
+      _audioPlayer.stop();
     });
   }
 
@@ -40,7 +43,7 @@ class _MainPageState extends State<MainPage> {
     if (isPlaying) {
       _audioPlayer.pause();
     } else {
-      _audioPlayer.play(UrlSource(trackData['preview']));
+      _audioPlayer.play(trackData['preview']);
     }
     setState(() {
       isPlaying = !isPlaying;
@@ -61,12 +64,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       body: Column(
         children: [
-          header(),
-          trackData.isEmpty
-              ? const Center(child: CircularProgressIndicator())
+           const LogoHeader(),
+            trackData.isEmpty  ? const Center(child: CircularProgressIndicator())
               : Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -78,7 +80,6 @@ class _MainPageState extends State<MainPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            color: AppColors.primaryColor,
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
@@ -91,11 +92,11 @@ class _MainPageState extends State<MainPage> {
                                   Text(trackData['title'],
                                       style: Theme.of(context)
                                           .textTheme
-                                          .headline6),
+                                          .bodyLarge),
                                   Text(trackData['artist']['name'],
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText2),
+                                          .bodyLarge),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -146,46 +147,3 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class header extends StatelessWidget {
-  const header({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.primaryColor,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            Image.asset(
-              'assets/aleatunes.png',
-              width: 20,
-            ),
-            const SizedBox(
-                width: 10), // Ajouter un espace entre l'image et le texte
-            Expanded(
-              child: Column(
-                crossAxisAlignment:
-                    CrossAxisAlignment.start, // Aligner le texte à gauche
-                children: [
-                  Text(
-                    'fdsggsdfgfdkmj  mkldfsjg jkf qlc i dgkfjog  kjodg ksdfpj nezj',
-                    style: Theme.of(context).textTheme.headline6,
-                    softWrap: true,
-                  ),
-                  Text(
-                    'fdsggsdfgfdkmj  mkldfsjg jkf qlc i dgkfjog  kjodg ksdfpj nezj',
-                    style: Theme.of(context).textTheme.headline6,
-                    softWrap: true,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
