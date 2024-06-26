@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'components/LogoHeader.dart';
+import 'components/logo_header.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
