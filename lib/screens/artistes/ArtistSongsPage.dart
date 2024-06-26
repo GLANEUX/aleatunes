@@ -86,67 +86,100 @@ class _ArtistSongsPageState extends State<ArtistSongsPage> {
     _audioPlayer.dispose();
     super.dispose();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Row(
-          children: [
-            CircleAvatar(
-              radius: 20,
-              backgroundImage: NetworkImage(widget
-                  .artistImage), // Remplacez par l'URL de l'image de l'artiste
-            ),
-            SizedBox(width: 10),
-            Expanded(child: Text(widget.artistName)),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/deezer.png',
-              width: 24,
-              height: 24,
-            ),
-            onPressed: viewondeezer,
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      backgroundColor: Colors.deepPurple, // Couleur de fond de l'AppBar
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+      title: Row(
+        children: [
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: NetworkImage(widget.artistImage),
           ),
-          IconButton(
-            icon: const Icon(Icons.share),
-            onPressed: _shareTrack,
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              widget.artistName,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white, // Couleur du texte
+              ),
+            ),
           ),
         ],
       ),
-      body: topTracks.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: topTracks.length,
-              itemBuilder: (context, index) {
-                final track = topTracks[index];
-                return ListTile(
-                  leading: Image.network(track['album']['cover_small']),
-                  title: Text(track['title']),
-                  subtitle: Text(track['artist']['name']),
+      actions: [
+        IconButton(
+          icon: Image.asset(
+            'assets/deezer.png',
+            width: 24,
+            height: 24,
+          ),
+          onPressed: viewondeezer,
+        ),
+        IconButton(
+          icon: const Icon(Icons.share),
+          onPressed: _shareTrack,
+        ),
+      ],
+    ),
+    body: topTracks.isEmpty
+        ? Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            itemCount: topTracks.length,
+            itemBuilder: (context, index) {
+              final track = topTracks[index];
+              return Card(
+                elevation: 4, // Élévation de la carte
+                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10), 
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10), // Padding interne du ListTile
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      track['album']['cover_small'],
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  title: Text(
+                    track['title'],
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    track['artist']['name'],
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[600],
+                    ),
+                  ),
                   trailing: track['preview'] != ''
                       ? IconButton(
                           icon: Icon(
-                            _isPlaying &&
-                                    _currentlyPlayingUrl == track['preview']
+                            _isPlaying && _currentlyPlayingUrl == track['preview']
                                 ? Icons.pause_circle_filled
                                 : Icons.play_circle_filled,
+                            size: 30,
                           ),
                           onPressed: () => _playPausePreview(track['preview']),
                         )
                       : null,
-                );
-              },
-            ),
-    );
-  }
+                ),
+              );
+            },
+          ),
+  );
+}
 }

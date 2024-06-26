@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'ArtistSongsPage.dart';
 import '../components/errormessage.dart';
-import '../components/logo_header.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../../app_styles.dart';
+import '../components/text_header.dart';
 
 class ArtistePage extends StatefulWidget {
   const ArtistePage({super.key});
@@ -16,7 +15,6 @@ class ArtistePage extends StatefulWidget {
 }
 
 class _ArtistePageState extends State<ArtistePage> {
-  
   List<dynamic> artists = [];
   final Random random = Random();
   bool isLoading = true;
@@ -29,7 +27,7 @@ class _ArtistePageState extends State<ArtistePage> {
     });
 
     List<dynamic> newArtists = [];
-    while (newArtists.length < 4) {
+    while (newArtists.length < 1) { //! A REMETTRE A 4
       try {
         final artistId = random.nextInt(1000000);
         final response = await http
@@ -49,11 +47,9 @@ class _ArtistePageState extends State<ArtistePage> {
 
           if (tracksResult['data'] != null && tracksResult['data'].isNotEmpty) {
             newArtists.add(result);
-            print('Fetched artist with ID: ${result['id']}');
           }
         }
       } catch (e) {
-        print('Error fetching artist: $e');
         setState(() {
           errorMessage = true;
           isLoading = false;
@@ -72,54 +68,45 @@ class _ArtistePageState extends State<ArtistePage> {
     });
   }
 
-                   
-
-
   @override
   void initState() {
     super.initState();
     fetchRandomArtists();
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: artisteview,
+        children: [
+          const TextHeader(thetitle: "Découvrez  des Artistes"),
+          Expanded(
+          child: Center(
+              child: isLoading
+                  ? const CircularProgressIndicator()
+                  : errorMessage
+                      ? const Errormessage()
+                      : musicview(),
+            ),
+          ),
+          buttonFind(),
+        ],
       ),
     );
   }
 
-  List<Widget> get artisteview {
-    return [
-      Expanded(
-        child: Center(
-          child: isLoading
-              ? const CircularProgressIndicator()
-              : errorMessage
-                  ? const Errormessage()
-                  : musicview(),
-        ),
-      ),
-      buttonfind(),
-    ];
-  }
 
-  Padding buttonfind() {
+  Padding buttonFind() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(20),
       child: ElevatedButton(
         onPressed: fetchRandomArtists,
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-        ),
+        style: AppStyles.elevatedButtonTheme,
         child: const Text(
           'NOUVELLE DÉCOUVERTE',
-          style: TextStyle(fontSize: 16),
+          style: AppStyles.buttontext,
         ),
       ),
     );
@@ -127,11 +114,13 @@ class _ArtistePageState extends State<ArtistePage> {
 
   Padding musicview() {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 60), // Ajustez l'espacement entre les éléments de la grille ici
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 4 / 5,
+             mainAxisSpacing: 20, // Espacement vertical entre les éléments
+        crossAxisSpacing: 20, // Espacement horizontal entre les éléments
         ),
         itemCount: artists.length,
         itemBuilder: (context, index) {
@@ -144,7 +133,7 @@ class _ArtistePageState extends State<ArtistePage> {
                   builder: (context) => ArtistSongsPage(
                     artistId: artist['id'],
                     artistName: artist['name'],
-                    shareUrl: artist['share'], 
+                    shareUrl: artist['share'],
                     artistImage: artist['picture_medium'],
                   ),
                 ),
@@ -159,7 +148,8 @@ class _ArtistePageState extends State<ArtistePage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(20)),
                     child: Image.network(
                       artist['picture_medium'],
                       height: 150,
@@ -173,16 +163,16 @@ class _ArtistePageState extends State<ArtistePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            artist['name'] ,
-                            maxLines: 2,
+                            artist['name'],
+                            maxLines: 1,
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               overflow: TextOverflow.ellipsis,
+                              fontFamily: 'Kanit'
                             ),
                             textAlign: TextAlign.center,
                           ),
-                         
                         ],
                       ),
                     ),

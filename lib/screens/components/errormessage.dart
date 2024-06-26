@@ -8,13 +8,19 @@ class Errormessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Text(
-        "errorMessage",
-        style: TextStyle(color: Colors.red, fontSize: 16),
-        textAlign: TextAlign.center,
-      ),
-    );
+    return  Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset('assets/aleatunes.png', width: 140,),
+            const SizedBox(height: 20),
+            const Text('ALEATUNES', style: TextStyle(fontSize: 30)),
+            const SizedBox(height: 30),
+            const Text('Vous êtes hors ligne'),
+      
+          ],
+        ),
+      );
   }
 }
