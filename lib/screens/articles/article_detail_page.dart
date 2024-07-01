@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'article.dart';
+import '../../app_styles.dart';
 
 class ArticleDetailPage extends StatelessWidget {
   final Article article;
@@ -12,14 +13,28 @@ class ArticleDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(article.title),
+        backgroundColor: AppStyles.primaryColor,
+        title: Expanded(
+            child: Text(
+              article.title,
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black, 
+           fontFamily: 'Kanit',
+                  overflow: TextOverflow.ellipsis,
+                ),
+                maxLines: 1,            ),
+          ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(article.imageUrl),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image.asset(article.imageUrl),
+            ),
             const SizedBox(height: 16),
             ListView.builder(
               shrinkWrap: true,
@@ -31,20 +46,12 @@ class ArticleDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       article.sections[index].title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
+                      style: AppStyles.headline1.copyWith(color: AppStyles.secondaryColor),
                     ),
                     const SizedBox(height: 8),
                     Text(
                       article.sections[index].content,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black87,
-                        height: 1.5,
-                      ),
+                      style: AppStyles.bodyText2.copyWith(color: Colors.black87, height: 1.5),
                     ),
                     const SizedBox(height: 16),
                   ],

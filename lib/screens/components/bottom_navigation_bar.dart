@@ -3,6 +3,7 @@ import '../home.dart';
 import '../artistes/ArtistePage.dart';
 import '../articles/articles_page.dart';
 import '../about.dart';
+import '../../app_styles.dart';
 
 class DeviceScreen extends StatefulWidget {
   const DeviceScreen({super.key});
@@ -28,18 +29,12 @@ class _DeviceScreenState extends State<DeviceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: _currentScreen != 0
-      //     ? AppBar(
-      //       backgroundColor: const Color.fromARGB(129, 103, 196, 215),
-      //         title: Text(_screenLabels[_currentScreen]),
-      //       )
-      //     : null,
       body: _screenList[_currentScreen],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 16, 31, 34),
+        backgroundColor: AppStyles.secondaryColor,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromARGB(255, 103, 196, 215),
-        unselectedItemColor: const Color.fromARGB(129, 103, 196, 215),
+        selectedItemColor: AppStyles.primaryColor,
+        unselectedItemColor: const Color.fromARGB(255, 162, 110, 254),
         iconSize: 35,
         currentIndex: _currentScreen,
         onTap: _onTabTapped,

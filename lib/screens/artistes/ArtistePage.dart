@@ -27,7 +27,7 @@ class _ArtistePageState extends State<ArtistePage> {
     });
 
     List<dynamic> newArtists = [];
-    while (newArtists.length < 1) { //! A REMETTRE A 4
+    while (newArtists.length < 4) { 
       try {
         final artistId = random.nextInt(1000000);
         final response = await http
@@ -78,10 +78,14 @@ class _ArtistePageState extends State<ArtistePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppStyles.primaryColor,
+        title: const TextHeader(thetitle: "Découvrez  des Artistes"),
+
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const TextHeader(thetitle: "Découvrez  des Artistes"),
           Expanded(
           child: Center(
               child: isLoading

@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../app_styles.dart';
 
 class ArtistSongsPage extends StatefulWidget {
   final int artistId;
@@ -90,12 +91,13 @@ class _ArtistSongsPageState extends State<ArtistSongsPage> {
 Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      backgroundColor: Colors.deepPurple, // Couleur de fond de l'AppBar
+      backgroundColor: AppStyles.primaryColor, 
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
         onPressed: () {
           Navigator.pop(context);
         },
+        
       ),
       title: Row(
         children: [
@@ -103,16 +105,17 @@ Widget build(BuildContext context) {
             radius: 20,
             backgroundImage: NetworkImage(widget.artistImage),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
               widget.artistName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white, // Couleur du texte
-              ),
-            ),
+                color: Colors.black, // Couleur du texte
+           fontFamily: 'Kanit',
+                  overflow: TextOverflow.ellipsis,
+                ),
+                maxLines: 1,            ),
           ),
         ],
       ),
@@ -132,16 +135,16 @@ Widget build(BuildContext context) {
       ],
     ),
     body: topTracks.isEmpty
-        ? Center(child: CircularProgressIndicator())
+        ? const Center(child: CircularProgressIndicator())
         : ListView.builder(
             itemCount: topTracks.length,
             itemBuilder: (context, index) {
               final track = topTracks[index];
               return Card(
                 elevation: 4, // Élévation de la carte
-                margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10), 
+                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10), 
                 child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10), // Padding interne du ListTile
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10), // Padding interne du ListTile
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
@@ -153,7 +156,7 @@ Widget build(BuildContext context) {
                   ),
                   title: Text(
                     track['title'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),

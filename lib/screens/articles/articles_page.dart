@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'article_detail_page.dart';
 import 'article.dart';
-
+import '../../app_styles.dart';
+import '../components/text_header.dart';
 class ArticlesPage extends StatelessWidget {
   final List<Article> articles = [
     Article(
@@ -192,244 +193,82 @@ Article(
   ],
   imageUrl: 'assets/article5.png',
 ),
-Article(
-  title: 'Évolution des Genres Musicaux',
-  excerpt:
-      'Les genres musicaux évoluent constamment, influencés par des facteurs culturels et technologiques...',
-  sections: [
-    ArticleSection(
-      title: 'Introduction',
-      content:
-          'Les genres musicaux évoluent constamment, influencés par des facteurs culturels et technologiques. Chaque décennie voit l\'émergence de nouveaux styles et la transformation des genres existants.',
-    ),
-    ArticleSection(
-      title: 'Influences culturelles',
-      content:
-          'Les événements sociaux et politiques ont toujours joué un rôle majeur dans l\'évolution de la musique. Par exemple, le rock des années 60 était fortement influencé par les mouvements de contre-culture et de protestation.',
-    ),
-    ArticleSection(
-      title: 'Fusion des genres',
-      content:
-          'La fusion des genres est un phénomène courant dans la musique moderne. Des artistes mélangent des éléments de différents styles pour créer des sons uniques, comme le rap-rock ou l\'électro-pop.',
-    ),
-    ArticleSection(
-      title: 'Impact de la technologie',
-      content:
-          'Les avancées technologiques influencent également les genres musicaux. L\'électronique et les logiciels de production ont donné naissance à des genres comme l\'EDM et la synthwave.',
-    ),
-    ArticleSection(
-      title: 'La mondialisation',
-      content:
-          'La mondialisation permet la diffusion rapide de nouvelles tendances musicales. Des genres locaux peuvent atteindre une audience globale, comme le reggaeton ou la K-pop.',
-    ),
-    ArticleSection(
-      title: 'Conclusion',
-      content:
-          'L\'évolution des genres musicaux est un reflet de notre société en constante mutation. La diversité et l\'innovation dans la musique promettent un avenir riche en découvertes sonores.'
-          ),
-],
-imageUrl: 'assets/article5.png',
-),
-Article(
-  title: 'Impact du Numérique sur la Musique',
-  excerpt:
-      'L\'ère numérique a transformé tous les aspects de l\'industrie musicale, de la production à la consommation...',
-  sections: [
-    ArticleSection(
-      title: 'Introduction',
-      content:
-          'L\'ère numérique a transformé tous les aspects de l\'industrie musicale, de la production à la consommation. Les artistes et les auditeurs bénéficient de nouvelles opportunités et de défis.',
-    ),
-    ArticleSection(
-      title: 'Production musicale',
-      content:
-          'Les outils numériques ont rendu la production musicale plus accessible. Des logiciels de production et des instruments virtuels permettent à quiconque de créer de la musique professionnelle chez soi.',
-    ),
-    ArticleSection(
-      title: 'Distribution et promotion',
-      content:
-          'Internet offre des plateformes pour distribuer et promouvoir la musique. Les réseaux sociaux, YouTube, et les plateformes de streaming sont des moyens essentiels pour atteindre un public mondial.',
-    ),
-    ArticleSection(
-      title: 'Consommation de musique',
-      content:
-          'La consommation de musique a évolué avec le numérique. Les playlists et les recommandations algorithmiques influencent fortement ce que nous écoutons, modifiant nos habitudes d\'écoute.',
-    ),
-    ArticleSection(
-      title: 'Défis et opportunités',
-      content:
-          'Le numérique a créé des opportunités, mais aussi des défis pour les artistes. La saturation du marché et la question des revenus du streaming sont des sujets de préoccupation.',
-    ),
-    ArticleSection(
-      title: 'Conclusion',
-      content:
-          'L\'ère numérique a profondément impacté la musique. Bien qu\'elle présente des défis, elle ouvre également des possibilités infinies pour la création et la consommation musicale.',
-    ),
-  ],
-  imageUrl: 'assets/article4.png',
-),
-
-Article(
-  title: 'Musique et Éducation',
-  excerpt:
-      'La musique joue un rôle important dans l\'éducation, offrant des bénéfices cognitifs et émotionnels...',
-  sections: [
-    ArticleSection(
-      title: 'Introduction',
-      content:
-          'La musique joue un rôle important dans l\'éducation, offrant des bénéfices cognitifs et émotionnels. Elle est intégrée dans les programmes scolaires et utilisée comme outil pédagogique.',
-    ),
-    ArticleSection(
-      title: 'Développement cognitif',
-      content:
-          'L\'apprentissage de la musique peut améliorer les compétences cognitives. Des études montrent que les enfants qui apprennent à jouer d\'un instrument développent de meilleures capacités de mémoire et de concentration.',
-    ),
-    ArticleSection(
-      title: 'Expression émotionnelle',
-      content:
-          'La musique permet aux étudiants d\'exprimer leurs émotions. Elle peut servir de moyen de communication et d\'expression personnelle, particulièrement bénéfique pour ceux ayant des difficultés à verbaliser leurs sentiments.',
-    ),
-    ArticleSection(
-      title: 'Culture et histoire',
-      content:
-          'La musique est un excellent moyen d\'enseigner la culture et l\'histoire. Elle peut être utilisée pour explorer différentes époques et cultures, offrant une perspective plus riche sur le monde.',
-    ),
-    ArticleSection(
-      title: 'Collaboration et discipline',
-      content:
-          'Jouer de la musique en groupe enseigne la collaboration et la discipline. Les élèves apprennent à travailler ensemble et à respecter les horaires et les pratiques.',
-    ),
-    ArticleSection(
-      title: 'Conclusion',
-      content:
-          'Intégrer la musique dans l\'éducation offre de nombreux avantages. Elle enrichit le développement cognitif, émotionnel et social des élèves, tout en leur offrant une appréciation de la culture et de l\'histoire.',
-    ),
-  ],
-  imageUrl: 'assets/article3.png',
-),
-Article(
-  title: 'Femmes dans la Musique',
-  excerpt:
-      'Les femmes ont toujours joué un rôle crucial dans la musique, mais leurs contributions sont souvent sous-estimées...',
-  sections: [
-    ArticleSection(
-      title: 'Introduction',
-      content:
-          'Les femmes ont toujours joué un rôle crucial dans la musique, mais leurs contributions sont souvent sous-estimées. Cet article explore l\'impact des femmes dans l\'industrie musicale et les défis qu\'elles rencontrent.',
-    ),
-    ArticleSection(
-      title: 'Pionnières de la musique',
-      content:
-          'Des pionnières comme Aretha Franklin et Nina Simone ont brisé les barrières et ouvert la voie pour les générations futures. Leurs contributions ont été fondamentales dans l\'évolution de nombreux genres musicaux.',
-    ),
-    ArticleSection(
-      title: 'Inégalité de genre',
-      content:
-          'L\'industrie musicale reste marquée par l\'inégalité de genre. Les femmes sont souvent sous-représentées dans les rôles de production et de direction, et elles font face à des défis uniques en termes de reconnaissance et de rémunération.',
-    ),
-    ArticleSection(
-      title: 'Émergence de nouvelles voix',
-      content:
-          'De plus en plus de femmes prennent des rôles de leadership dans la musique. Des artistes comme Beyoncé, Taylor Swift et Billie Eilish sont non seulement des interprètes, mais aussi des productrices et des auteures-compositrices influentes.',
-    ),
-    ArticleSection(
-      title: 'Initiatives et soutien',
-      content:
-          'Des initiatives et organisations se consacrent à soutenir les femmes dans la musique. Des programmes de mentorat, des bourses et des festivals dédiés aux femmes artistes contribuent à équilibrer la donne.',
-    ),
-    ArticleSection(
-      title: 'Conclusion',
-      content:
-          'Les femmes continuent de façonner la musique de manière significative. Reconnaître et soutenir leur travail est essentiel pour une industrie musicale plus équitable et diversifiée.',
-    ),
-  ],
-  imageUrl: 'assets/article2.png',
-),
-
-Article(
-  title: 'Musique et Écologie',
-  excerpt:
-      'L\'industrie musicale commence à se tourner vers des pratiques plus durables et respectueuses de l\'environnement...',
-  sections: [
-    ArticleSection(
-      title: 'Introduction',
-      content:
-          'L\'industrie musicale commence à se tourner vers des pratiques plus durables et respectueuses de l\'environnement. Des artistes et des organisations s\'engagent à réduire l\'empreinte écologique de la musique.',
-    ),
-    ArticleSection(
-      title: 'Festivals verts',
-      content:
-          'De nombreux festivals adoptent des pratiques écologiques, comme l\'utilisation de sources d\'énergie renouvelables, la réduction des déchets et la promotion du recyclage.',
-    ),
-    ArticleSection(
-      title: 'Vinyles et CDs écoresponsables',
-      content:
-          'Les maisons de disques explorent des options plus durables pour la production de vinyles et de CDs, utilisant des matériaux recyclés et des procédés moins polluants.',
-    ),
-    ArticleSection(
-      title: 'Streaming et émissions de carbone',
-      content:
-          'Le streaming a un coût environnemental, notamment en termes d\'émissions de carbone dues aux centres de données. Des efforts sont faits pour augmenter l\'efficacité énergétique et utiliser des énergies renouvelables.',
-    ),
-    ArticleSection(
-      title: 'Sensibilisation des artistes',
-      content:
-          'De nombreux artistes utilisent leur plateforme pour sensibiliser leurs fans à l\'écologie. Des chansons engagées et des campagnes de sensibilisation sont de plus en plus courantes.',
-    ),
-    ArticleSection(
-      title: 'Conclusion',
-      content:
-          'La musique peut jouer un rôle dans la lutte pour la durabilité. En adoptant des pratiques plus écologiques, l\'industrie musicale peut contribuer à la préservation de notre planète tout en continuant à inspirer et à divertir.',
-    ),
-  ],
-  imageUrl: 'assets/article1.png',
-),
-
 
 
 
      ];
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Articles de Musique'),
+        backgroundColor: AppStyles.primaryColor,
+        title: const TextHeader(thetitle: "Apprenez en plus"),
+
       ),
       body: ListView.builder(
         itemCount: articles.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.asset(
-              articles[index].imageUrl,
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-            ),
-            title: Text(
-              articles[index].title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.blueAccent,
-              ),
-            ),
-            subtitle: Text(
-              articles[index].excerpt,
-              style: TextStyle(
-                fontSize: 14,
-                fontStyle: FontStyle.italic,
-                color: Colors.black54,
-              ),
-            ),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ArticleDetailPage(article: articles[index]),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ArticleDetailPage(article: articles[index]),
+                  ),
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: Container(
+                  color: AppStyles.secondaryColor.withOpacity(0.1),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15.0),
+                          topRight: Radius.circular(15.0),
+                        ),
+                        child: Image.asset(
+                          articles[index].imageUrl,
+                          width: double.infinity,
+                          height: 75,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: const BoxDecoration(
+                          color: AppStyles.primaryColor,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              articles[index].title,
+                              style: AppStyles.headline1.copyWith(color: Colors.black),
+                            ),
+                            const SizedBox(height: 5.0),
+                            Text(
+                              articles[index].excerpt,
+                              style: AppStyles.bodyText2.copyWith(color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              );
-            },
+              ),
+            ),
           );
         },
       ),

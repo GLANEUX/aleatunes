@@ -12,7 +12,7 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       body: Column(
         children: [
                     LogoHeader(),
@@ -64,25 +64,10 @@ class _AboutPageState extends State<AboutPage> {
                       color: Colors.black,
                     ),
                   ),
+
                   SizedBox(height: 20.0),
                   Text(
-                    'Pourquoi Notre Application a-t-elle Été Créée ?',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 10.0),
-                  Text(
-                    'Notre application a été créée pour répondre au besoin croissant de découvrir de la musique nouvelle et variée, tout en offrant un contenu éducatif et informatif sur le monde de la musique.',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      color: Colors.black,
-                    ),
-                  ),
-                  SizedBox(height: 20.0),
-                  Text(
-                    'Rejoignez-nous dans cette aventure musicale ! Téléchargez notre application dès aujourd\'hui et commencez votre voyage pour découvrir la musique d\'une manière totalement nouvelle.',
+                    'Application crée par Océane GLANEUX, utilisant l\'api de deezer.',
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,

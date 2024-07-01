@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../app_styles.dart';
 
 class TextHeader extends StatelessWidget {
   final String thetitle;
@@ -11,17 +10,13 @@ class TextHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppStyles.primaryColor,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
+    return  Row(
           children: [
             Expanded(
               child: Text(
                 thetitle,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style:   const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w800,
                   fontFamily: 'Kanit',
@@ -31,8 +26,6 @@ class TextHeader extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
+        );
   }
 }
